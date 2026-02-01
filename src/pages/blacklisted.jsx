@@ -24,10 +24,6 @@ const IndexPage = () => {
                     language: 'en-US',
                     description: 'You\'ve been redirected for your safety',
                     image: gatsbyConfig.siteMetadata.siteUrl + metaimg,
-                    author: {
-                        email: 'willnode@wellosoft.net',
-                        name: 'Wildan M',
-                    },
                 }}
             />
             <Box as="main" p={5} textAlign="center" maxWidth="1000px" mx="auto">

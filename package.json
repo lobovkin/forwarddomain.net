@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "ForwardDomain.net web page",
-  "author": "Wildan M",
+  "author": "Lobovkin",
   "engines": {
     "node": ">=18.0.0"
   },

@@ -31,10 +31,6 @@ const IndexPage = () => {
           language: 'en-US',
           description: 'Domain Forwarding Service using DNS. 100% free. No trackers.',
           image: gatsbyConfig.siteMetadata.siteUrl + metaimg,
-          author: {
-            email: 'willnode@wellosoft.net',
-            name: 'Wildan M',
-          },
         }}
       />
       <Box as="main" px={10} py={5} textAlign="center" maxWidth="1000px" mx="auto">
@@ -51,10 +47,10 @@ const IndexPage = () => {
         <Content />
         <Readme />
         <Box my={5}>
-          Proudly created by <Link href="https://github.com/willnode">Wildan M</Link> 🔥
+          
         </Box>
       </Box>
-      <a className="github-fork-ribbon" href="https://github.com/willnode/forward-domain" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
+      <a className="github-fork-ribbon" href="https://github.com/lobovkin/forward-domain" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
     </ChakraProvider>
   )
 }

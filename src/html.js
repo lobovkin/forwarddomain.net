@@ -11,8 +11,6 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <script defer data-domain="forwarddomain.net"
-        src="https://stat.wellosoft.net/js/plausible.js"></script>
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>

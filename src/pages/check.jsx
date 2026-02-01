@@ -43,10 +43,6 @@ const IndexPage = () => {
                     language: 'en-US',
                     description: 'Purge Our Cache',
                     image: gatsbyConfig.siteMetadata.siteUrl + metaimg,
-                    author: {
-                        email: 'willnode@wellosoft.net',
-                        name: 'Wildan M',
-                    },
                 }}
             />
             <Box as="main" p={5} textAlign="center" maxWidth="1000px" mx="auto">

@@ -9,7 +9,7 @@ const Readme = () => {
             <Text>This services forwards domains using DNS only with HTTP(s) Redirects.</Text>
             <Text>It's 100% free and open source so you can see it's free of tracking or if you want to fork this service to your own server.</Text>
             <Box my={5}>
-                <GitHubButton href="https://github.com/willnode/forward-domain" data-size="large" data-show-count="true" aria-label="Star willnode/forward-domain on GitHub">&nbsp;Visit willnode/forward-domain</GitHubButton>
+                <GitHubButton href="https://github.com/lobovkin/forward-domain" data-size="large" data-show-count="true" aria-label="Star lobovkin/forward-domain on GitHub">&nbsp;Visit lobovkin/forward-domain</GitHubButton>
             </Box>
             <Heading as="h3">Possible scenarios:</Heading>
             <UnorderedList>
@@ -33,15 +33,14 @@ const Readme = () => {
                 <ListItem>We handle HTTPS certificates for you</ListItem>
             </UnorderedList>
             <Heading as="h3">Is it really free?</Heading>
-            <Text style={{ maxWidth: 600 }}>Forwarding domains should be easy to set up.
-                I use this myself for <a href="https://domcloud.co" target="_blank" rel="noreferrer">domcloud.co</a>.</Text>
+            <Text style={{ maxWidth: 600 }}>Forwarding domains should be easy to set up.</Text>
             <Heading as="h3">How can I check redirects will work?</Heading>
             <Text style={{ maxWidth: 600 }}>This service uses Google's <a href="https://dns.google" rel="nofollow">Public DNS Resolver</a>.
                 Once first accessed, values will be cached for a day.</Text>
             <Heading as="h3">Why does it load slowly?</Heading>
             <Text>It is only being slow the first time because it has to sign HTTPS certificates.</Text>
             <Heading as="h3">How about IPv6?</Heading>
-            <Text style={{ maxWidth: 600 }}>IPv6 record is added in <Code>r.forwarddomain.net</Code> so subdomain redirects will simply work with IPv6. We don't guarantee that its IPv6 address will be persistent though. See <a href="https://github.com/willnode/forward-domain/issues/2#issuecomment-1003831835" target="_blank" rel="noreferrer">#2</a> for apex domains setup.</Text>
+            <Text style={{ maxWidth: 600 }}>IPv6 record is added in <Code>r.forwarddomain.net</Code> so subdomain redirects will simply work with IPv6. We don't guarantee that its IPv6 address will be persistent though. See <a href="https://github.com/lobovkin/forward-domain/issues/2#issuecomment-1003831835" target="_blank" rel="noreferrer">#2</a> for apex domains setup.</Text>
             <Heading as="h3">How about custom HTTP status code?</Heading>
             <Text style={{ maxWidth: 600 }}>HTTP status can be customized using <Code>http-status=</Code> option. By default it's 301, which is a permanent redirection. You can set it to 302 for a temporary redirection. This matters for search engines.</Text>
             <Heading as="h3">What records do we keep?</Heading>
@@ -49,11 +48,9 @@ const Readme = () => {
                 We only keep caches of DNS records and HTTPS certificates. This also means we can see how many users and what domains are using our service from this cache, but that's all. We don't keep log traffic nor any visitor data anywhere on our server.</Text>
             <Heading as="h3">Can you guarantee the uptime?</Heading>
             <Text style={{ maxWidth: 600 }}>
-                We keep this service available at best. But as this is a free service, there's no guarantee.
-                You can check our <a href="https://stats.uptimerobot.com/AA77Xt9Jx8" target="_blank" rel="noreferrer">status page 🚦</a> if you wanted to.</Text>
+                We keep this service available at best. But as this is a free service, there's no guarantee.</Text>
             <Heading as="h3">How can I support this service?</Heading>
             <Text>Star our repo and spread the word, please :)</Text>
-            <Text>Additionally, you can also <a href="https://github.com/sponsors/willnode">help us cover hosting costs 💸</a>.</Text>
             <Heading>Disclaimer</Heading>
             <Text fontStyle="italic" textAlign="justify" maxWidth={560}>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
                 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
