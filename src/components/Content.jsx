@@ -6,7 +6,7 @@ import { fixDomain, fixSource } from "../utils/parser";
 const subrc = `~.	IN	CNAME	r.forwarddomain.net
 `
 const apexrc = `~.	IN	A	167.172.5.31
-~.	IN	AAAA	2400:6180:0:d0::e08:a001
+~.	IN	AAAA	2400:6180:0:d2:0:2:a04c:2000
 `
 
 const permrc = `fwd.~.	IN	TXT	forward-domain=$`

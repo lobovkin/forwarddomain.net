@@ -24,11 +24,23 @@ const IndexPage = () => {
         var txt1 = await (await fetch(`https://dns.google/resolve?name=_.${dom}&type=TXT`)).json();
         var txt2 = await (await fetch(`https://dns.google/resolve?name=fwd.${dom}&type=TXT`)).json();
         var a = await (await fetch(`https://dns.google/resolve?name=${dom}&type=A`)).json();
+        var aaaa = await (await fetch(`https://dns.google/resolve?name=${dom}&type=AAAA`)).json();
         const txt = txt1.Answer?.[0]?.data || txt2.Answer?.[0]?.data || '';
-        const ip = a.Answer?.find(x => (x?.data + '').match(/^[\d.]+$/))?.data;
+
+        // Get all A records (type 1)
+        const allIps = a.Answer?.filter(x => x?.type === 1).map(x => x?.data) || [];
+        const ipValid = allIps.length > 0 && allIps.every(ip => ip === '167.172.5.31');
+
+        // Get all AAAA records (type 28)
+        const allIpv6 = aaaa.Answer?.filter(x => x?.type === 28).map(x => x?.data) || [];
+        const ipv6Valid = allIpv6.length === 0 || allIpv6.every(ip => ip === '2400:6180:0:d2:0:2:a04c:2000' || ip === '2400:6180:0:d0::e08:a001');
+
         const dnsstate = {
-            dom, txt, ip, txtPrefix: txt2.Answer?.[0]?.data == txt ? 'fwd.' : '_.',
-            raw: { txt1, txt2, a }
+            dom, txt,
+            allIps, ipValid,
+            allIpv6, ipv6Valid,
+            txtPrefix: txt2.Answer?.[0]?.data == txt ? 'fwd.' : '_.',
+            raw: { txt1, txt2, a, aaaa }
         }
         console.log(dnsstate);
         setDnsState(dnsstate);
@@ -71,8 +83,9 @@ const IndexPage = () => {
                         {dnsState && (<Box textAlign="left" width="fit-content" mx="auto" my={5}>
                             Domain Checked: <b>{dnsState?.dom}</b>  <br />
                             TXT Data {(dnsState?.txt + '').includes('forward-domain=') ? '✅' : '❌'}:   <b>{dnsState.txt}</b>  <br />
-                            IP Address {dnsState?.ip == '167.172.5.31' ? '✅' : '❌'}: <b>{dnsState.ip}</b>  <br />
-                            {(dnsState?.txt + '').includes('forward-domain=') && dnsState?.ip == '167.172.5.31' ? (
+                            IP Address {dnsState?.ipValid ? '✅' : '❌'}: <b>{dnsState.allIps?.join(', ') || 'Not set'}</b>  <br />
+                            {dnsState?.allIpv6?.length > 0 && (<>IPv6 Address {dnsState?.ipv6Valid ? '✅' : '❌'}: <b>{dnsState.allIpv6?.join(', ')}</b>  <br /></>)}
+                            {(dnsState?.txt + '').includes('forward-domain=') && dnsState?.ipValid && dnsState?.ipv6Valid ? (
                                 <p>Your DNS seems fine 🥳 URL redirect not correct? Fix it and <a href="https://dns.google/cache" target="_blank">Flush DNS Google</a> </p>
                             ) : (
                                 <p>I think your DNS is incorrect 😢 Please fix it and <a href="https://dns.google/cache" target="_blank">Flush DNS Google</a> </p>
