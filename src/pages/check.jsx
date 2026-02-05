@@ -82,9 +82,9 @@ const IndexPage = () => {
                         <Button onClick={check} isDisabled={!domain}>Check DNS</Button>
                         {dnsState && (<Box textAlign="left" width="fit-content" mx="auto" my={5}>
                             Domain Checked: <b>{dnsState?.dom}</b>  <br />
-                            TXT Data {(dnsState?.txt + '').includes('forward-domain=') ? '✅' : '❌'}:   <b>{dnsState.txt}</b>  <br />
-                            IP Address {dnsState?.ipValid ? '✅' : '❌'}: <b>{dnsState.allIps?.join(', ') || 'Not set'}</b>  <br />
-                            {dnsState?.allIpv6?.length > 0 && (<>IPv6 Address {dnsState?.ipv6Valid ? '✅' : '❌'}: <b>{dnsState.allIpv6?.join(', ')}</b>  <br /></>)}
+                            TXT record {(dnsState?.txt + '').includes('forward-domain=') ? '✅' : '❌'}:   <b>{dnsState.txt}</b>  <br />
+                            A record {dnsState?.ipValid ? '✅' : '❌'}: <b>{dnsState.allIps?.join(', ') || 'Not set'}</b>  <br />
+                            {dnsState?.allIpv6?.length > 0 && (<>AAAA record {dnsState?.ipv6Valid ? '✅' : '❌'}: <b>{dnsState.allIpv6?.join(', ')}</b>  <br /></>)}
                             {(dnsState?.txt + '').includes('forward-domain=') && dnsState?.ipValid && dnsState?.ipv6Valid ? (
                                 <p>Your DNS seems fine 🥳 URL redirect not correct? Fix it and <a href="https://dns.google/cache" target="_blank">Flush DNS Google</a> </p>
                             ) : (
