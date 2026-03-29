@@ -35,8 +35,7 @@ const Readme = () => {
             <Heading as="h3">Is it really free?</Heading>
             <Text style={{ maxWidth: 600 }}>Forwarding domains should be easy to set up.</Text>
             <Heading as="h3">How can I check redirects will work?</Heading>
-            <Text style={{ maxWidth: 600 }}>This service uses Google's <a href="https://dns.google" rel="nofollow">Public DNS Resolver</a>.
-                Once first accessed, values will be cached for a day.</Text>
+            <Text style={{ maxWidth: 600 }}>Use our <a href="/check/"><u>DNS checker</u></a> to verify your domain records are configured correctly. It validates TXT, A, and AAAA records against our servers and lets you flush the cache if needed.</Text>
             <Heading as="h3">Why does it load slowly?</Heading>
             <Text>It is only being slow the first time because it has to sign HTTPS certificates.</Text>
             <Heading as="h3">How about IPv6?</Heading>

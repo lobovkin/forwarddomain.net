@@ -17,7 +17,7 @@ const IndexPage = () => {
     return (
         <ChakraProvider>
             <ReactSEOMetaTags
-                render={(el) => <Helmet>{el}<link rel="icon" href={favicon} /></Helmet>}
+                render={(el) => <Helmet>{el}<link rel="icon" href={favicon} /><meta name="robots" content="noindex, nofollow" /></Helmet>}
                 website={{
                     url: 'https://forwarddomain.net/blacklisted',
                     title: 'Blacklisted | ForwardDomain.net',
