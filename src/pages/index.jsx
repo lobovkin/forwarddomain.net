@@ -27,9 +27,9 @@ const IndexPage = () => {
         </Helmet>}
         website={{
           url: 'https://forwarddomain.net',
-          title: 'ForwardDomain.net',
+          title: 'Forward Domain Using DNS | Free HTTPS URL Redirect Service',
           language: 'en-US',
-          description: 'Domain Forwarding Service using DNS. 100% free. No trackers.',
+          description: '⏩ Domain Forwarding Service using DNS. 100% free URL redirection. We automatically handle 🔒 HTTPS certificates. Open-source & 🛡️ tracker-free.',
           image: gatsbyConfig.siteMetadata.siteUrl + metaimg,
         }}
       />
