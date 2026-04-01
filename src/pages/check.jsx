@@ -51,9 +51,9 @@ const IndexPage = () => {
                 render={(el) => <Helmet>{el}<link rel="icon" href={favicon} /></Helmet>}
                 website={{
                     url: 'https://forwarddomain.net/blacklisted',
-                    title: 'Purge Cache | ForwardDomain.net',
+                    title: 'DNS Check | ForwardDomain.net',
                     language: 'en-US',
-                    description: 'Purge Our Cache',
+                    description: 'Check your DNS configuration for domain forwarding',
                     image: gatsbyConfig.siteMetadata.siteUrl + metaimg,
                 }}
             />
@@ -63,45 +63,47 @@ const IndexPage = () => {
                         ForwardDomain.net 📦
                     </Heading>
                     <Box my={5}>
-                        Doesn't Working? Diagose with our Check and Purge Tool
+                        Not working? Check your DNS configuration here
                     </Box>
                 </Box>
                 <Box>
-                    <form action="https://r.forwarddomain.net/flushcache" method="POST" encType="application/x-www-form-urlencoded">
+                    <form onSubmit={e => { e.preventDefault(); check(); }}>
                         <Heading as="h3" size='md' my={5}>
                             Step 1: Enter Your Domain 👇
                         </Heading>
                         <Box my={5}>
-                            <Input textAlign="center" autocompletion="off" name="domain" placeholder="Enter Domain" required value={domain} onChange={e => setDomain(e.currentTarget.value)} />
+                            <Input textAlign="center" autocompletion="off" placeholder="Enter Domain" required value={domain} onChange={e => setDomain(e.currentTarget.value)} />
                         </Box>
 
                         <Heading as="h3" size='md' my={5}>
                             Step 2: Check if Google DNS Picked Your TXT and CNAME records 👇
                         </Heading>
 
-                        <Button onClick={check} isDisabled={!domain}>Check DNS</Button>
-                        {dnsState && (<Box textAlign="left" width="fit-content" mx="auto" my={5}>
-                            Domain Checked: <b>{dnsState?.dom}</b>  <br />
-                            TXT record {(dnsState?.txt + '').includes('forward-domain=') ? '✅' : '❌'}:   <b>{dnsState.txt}</b>  <br />
-                            A record {dnsState?.ipValid ? '✅' : '❌'}: <b>{dnsState.allIps?.join(', ') || 'Not set'}</b>  <br />
-                            {dnsState?.allIpv6?.length > 0 && (<>AAAA record {dnsState?.ipv6Valid ? '✅' : '❌'}: <b>{dnsState.allIpv6?.join(', ')}</b>  <br /></>)}
-                            {(dnsState?.txt + '').includes('forward-domain=') && dnsState?.ipValid && dnsState?.ipv6Valid ? (
-                                <p>Your DNS seems fine 🥳 URL redirect not correct? Fix it and <a href="https://dns.google/cache" target="_blank">Flush DNS Google</a> </p>
-                            ) : (
-                                <p>I think your DNS is incorrect 😢 Please fix it and <a href="https://dns.google/cache" target="_blank">Flush DNS Google</a> </p>
-                            )}
-                        </Box>)}
+                        <Button type="submit" isDisabled={!domain}>Check DNS</Button>
+                    </form>
+                    {dnsState && (<Box textAlign="left" width="fit-content" mx="auto" my={5}>
+                        Domain Checked: <b>{dnsState?.dom}</b>  <br />
+                        TXT record {(dnsState?.txt + '').includes('forward-domain=') ? '✅' : '❌'}:   <b>{dnsState.txt}</b>  <br />
+                        A record {dnsState?.ipValid ? '✅' : '❌'}: <b>{dnsState.allIps?.join(', ') || 'Not set'}</b>  <br />
+                        {dnsState?.allIpv6?.length > 0 && (<>AAAA record {dnsState?.ipv6Valid ? '✅' : '❌'}: <b>{dnsState.allIpv6?.join(', ')}</b>  <br /></>)}
+                        {(dnsState?.txt + '').includes('forward-domain=') && dnsState?.ipValid && dnsState?.ipv6Valid ? (
+                            <p>Your DNS seems fine 🥳 URL redirect not correct? Fix it and <a href="https://dns.google/cache" target="_blank">Flush DNS Google</a> </p>
+                        ) : (
+                            <p>I think your DNS is incorrect 😢 Please fix it and <a href="https://dns.google/cache" target="_blank">Flush DNS Google</a> </p>
+                        )}
+                    </Box>)}
 
-                        <Heading as="h3" size='md' my={5}>
-                            Step 3: Try our Service Now 👇
-                        </Heading>
+                    <Heading as="h3" size='md' my={5}>
+                        Step 3: Try our Service Now 👇
+                    </Heading>
 
-                        <Box my={5}>
-                            👉<a href={`https://${domain}`} target="_blank">Open {domain}</a>👈 <br />
-                        </Box>
+                    <Box my={5}>
+                        👉<a href={`https://${domain}`} target="_blank">Open {domain}</a>👈 <br />
+                    </Box>
 
+                    <form action="https://r.forwarddomain.net/flushcache" method="POST" encType="application/x-www-form-urlencoded">
+                        <input type="hidden" name="domain" value={domain} />
                         <Button type="submit" my={5}>Incorrect? Try Flush Our Cache</Button>
-
                     </form>
                 </Box>
                 <hr />
