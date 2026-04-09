@@ -39,7 +39,8 @@ const Readme = () => {
             <Heading as="h3">Why does it load slowly?</Heading>
             <Text>It is only being slow the first time because it has to sign HTTPS certificates.</Text>
             <Heading as="h3">How about IPv6?</Heading>
-            <Text style={{ maxWidth: 600 }}>IPv6 record is added in <Code>r.forwarddomain.net</Code> so subdomain redirects will simply work with IPv6.</Text>
+            <Text style={{ maxWidth: 600 }}>Subdomain redirects work with IPv6 automatically via <Code>r.forwarddomain.net</Code>. For apex domains, you can optionally add an AAAA record:</Text>
+            <Code display="block" my={2} p={2}>your-domain.	IN	AAAA	2400:6180:0:d2:0:2:a04c:2000</Code>
             <Heading as="h3">How about custom HTTP status code?</Heading>
             <Text style={{ maxWidth: 600 }}>HTTP status can be customized using <Code>http-status=</Code> option. By default it's 301, which is a permanent redirection. You can set it to 302 for a temporary redirection. This matters for search engines.</Text>
             <Heading as="h3">What records do we keep?</Heading>
