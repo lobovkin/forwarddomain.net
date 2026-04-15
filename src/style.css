@@ -1,5 +1,9 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css);
 
+.github-fork-ribbon {
+    top: 48px !important;
+}
+
 .readme > * {
     margin-bottom: 0.5em;
 }
