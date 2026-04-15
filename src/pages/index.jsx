@@ -41,6 +41,8 @@ const IndexPage = () => {
         py={3}
         textAlign="center"
         fontSize={{ base: "sm", md: "md" }}
+        position="relative"
+        zIndex={10000}
       >
         Need analytics and wildcard subdomains? Try our service{" "}
         <Link href="https://www.redirs.com" isExternal color="blue.700" fontWeight="bold" textDecoration="underline">
