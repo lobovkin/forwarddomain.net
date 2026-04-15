@@ -33,6 +33,20 @@ const IndexPage = () => {
           image: gatsbyConfig.siteMetadata.siteUrl + metaimg,
         }}
       />
+      <Box
+        bg="blue.50"
+        borderBottom="1px solid"
+        borderColor="blue.200"
+        px={4}
+        py={3}
+        textAlign="center"
+        fontSize={{ base: "sm", md: "md" }}
+      >
+        Need analytics and wildcard subdomains? Try our service{" "}
+        <Link href="https://www.redirs.com" isExternal color="blue.700" fontWeight="bold" textDecoration="underline">
+          redirs.com
+        </Link>
+      </Box>
       <Box as="main" px={10} py={5} textAlign="center" maxWidth="1000px" mx="auto">
         <Box>
           <Heading as="h1" my={5}>
